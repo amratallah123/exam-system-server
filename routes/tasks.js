@@ -11,7 +11,8 @@ router.get("/words", (req, res) => {
 
 // rank endpoint
 router.post("/rank", (req, res) => {
-  if (req.body.score >= 90) {
+  console.log(req.body.score);
+  if (req.body.score >= 90 && req.body.score <= 100) {
     res.send({
       rank: 80,
     });
@@ -26,6 +27,10 @@ router.post("/rank", (req, res) => {
   } else if (req.body.score >= 30 && req.body.score < 50) {
     res.send({
       rank: 26.67,
+    });
+  } else {
+    res.send({
+      rank: "out of rank",
     });
   }
 });
