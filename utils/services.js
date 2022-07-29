@@ -4,15 +4,18 @@ const shuffle = require("lodash.shuffle");
 function shuffleArray(array) {
   return shuffle(array);
 }
-//check there is no at least one of them
 
+//check there is at least one of all categories
 function areThereAllTypes(array) {
   var noun = 0;
   var adjective = 0;
   var adverb = 0;
   var verb = 0;
   array = shuffleArray(array);
+
+  // slice ten elements only
   array = array.slice(0, 10);
+
   array.forEach((element) => {
     if (element.pos == "noun" && noun == 0) {
       noun = 1;
