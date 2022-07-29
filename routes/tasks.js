@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const testData = require("../TestData.json");
-const { shuflleArray, areThereALlType } = require("../utils/services");
+const { areThereAllTypes } = require("../utils/services");
 
 // words endpoint
 router.get("/words", (req, res) => {
-  let tenObject = areThereALlType(testData.wordList, 10);
+  let tenObject = areThereAllTypes(testData.wordList, 10);
   res.send(tenObject);
 });
 

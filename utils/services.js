@@ -1,17 +1,17 @@
-const _ = require("lodash");
+const shuffle = require("lodash.shuffle");
 
 //shuffling array
-function shuflleArray(array) {
-  return _.shuffle(array);
+function shuffleArray(array) {
+  return shuffle(array);
 }
 //check there is no at least one of them
 
-function areThereALlType(array) {
+function areThereAllTypes(array) {
   var noun = 0;
   var adjective = 0;
   var adverb = 0;
   var verb = 0;
-  array = shuflleArray(array);
+  array = shuffleArray(array);
   array = array.slice(0, 10);
   array.forEach((element) => {
     if (element.pos == "noun" && noun == 0) {
@@ -23,11 +23,12 @@ function areThereALlType(array) {
     } else if (element.pos == "verb" && verb == 0) verb = 1;
   });
   while (noun == 0 || adjective == 0 || adverb == 0 || verb == 0) {
-    shuflleArray(array);
+    shuffleArray(array);
   }
   return array;
 }
+
 module.exports = {
-  shuflleArray,
-  areThereALlType,
+  shuffleArray,
+  areThereAllTypes,
 };
