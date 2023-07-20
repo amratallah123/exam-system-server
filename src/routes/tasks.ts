@@ -1,16 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const testData = require("../TestData.json");
-const { areThereAllTypes } = require("../utils/services");
+import testData from "../TestData";
+import { Word } from "../models/word.Model";
+
+import { areThereAllTypes } from "../utils/services";
 
 // words endpoint
-router.get("/words", (req, res) => {
-  let tenObject = areThereAllTypes(testData.wordList, 10);
+router.get("/words", (req: any, res: any) => {
+  let tenObject: Array<Word> = areThereAllTypes(testData.words);
   res.send(tenObject);
 });
 
 // rank endpoint
-router.post("/rank", (req, res) => {
+router.post("/rank", (req: any, res: any) => {
   console.log(req.body.score);
   if (req.body.score >= 90 && req.body.score <= 100) {
     res.send({
@@ -35,4 +37,4 @@ router.post("/rank", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
